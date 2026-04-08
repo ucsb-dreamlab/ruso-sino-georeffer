@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: georef_topo_maps
+Version: 0.1.0
+Summary: Georeference Soviet topographic maps of China
+Requires-Python: >=3.9
+Requires-Dist: numpy
+Requires-Dist: opencv-python
+Requires-Dist: scikit-image
+Requires-Dist: rasterio
+Requires-Dist: affine
+Requires-Dist: pytesseract
+Requires-Dist: Pillow
+Requires-Dist: shapely
+Requires-Dist: geopandas
+Requires-Dist: pyogrio

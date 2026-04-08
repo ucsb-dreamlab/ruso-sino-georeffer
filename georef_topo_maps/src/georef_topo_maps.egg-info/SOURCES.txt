@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+src/__init__.py
+src/collar_detector.py
+src/coordinate_ocr.py
+src/exporters.py
+src/georeferencer.py
+src/neatline_finder.py
+src/shapefile_index.py
+src/georef_topo_maps.egg-info/PKG-INFO
+src/georef_topo_maps.egg-info/SOURCES.txt
+src/georef_topo_maps.egg-info/dependency_links.txt
+src/georef_topo_maps.egg-info/requires.txt
+src/georef_topo_maps.egg-info/top_level.txt

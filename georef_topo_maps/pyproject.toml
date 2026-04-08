@@ -18,4 +18,20 @@ dependencies = [
     "affine",
     "pytesseract",
     "Pillow",
+    "shapely",
+    "geopandas",
+    "pyogrio",
+    "google-generativeai",
 ]
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
+
+[tool.pixi.pypi-dependencies]
+georef_topo_maps = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+tesseract = ">=5.5.2,<6"
