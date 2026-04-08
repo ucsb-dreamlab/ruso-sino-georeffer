@@ -1,0 +1,5 @@
+*.tif
+*.tiff
+*.tfw
+georef_topo_maps/tiffs/
+georef_topo_maps/output/

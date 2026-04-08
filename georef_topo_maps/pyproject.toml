@@ -1,0 +1,21 @@
+# Repository setup
+# This is a fresh project directory for georeferencing Soviet topographic maps of China
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "georef_topo_maps"
+version = "0.1.0"
+description = "Georeference Soviet topographic maps of China"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "scikit-image",
+    "rasterio",
+    "affine",
+    "pytesseract",
+    "Pillow",
+]
