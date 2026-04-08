@@ -33,8 +33,8 @@ class NeatlineFinder:
         contours, _ = cv2.findContours(binary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         # We are looking for a large rectangle (the neatline)
-        # It should be at least 40% of the ROI width and height
-        min_area = w * h * 0.4
+        # It should be at least 50% of the ROI width and height
+        min_area = w * h * 0.5
         rect_candidates = []
         for cnt in contours:
             area = cv2.contourArea(cnt)
@@ -49,20 +49,11 @@ class NeatlineFinder:
                 rect_candidates.append((area, approx))
 
         if rect_candidates:
-            # Sort by area descending
-            rect_candidates.sort(key=lambda x: x[0], reverse=True)
-            # Most Soviet maps have an outer frame and an inner neatline.
-            # If we find both, the second largest is likely the neatline.
-            # If we find only one large one, it's either the neatline or the frame.
-            if len(rect_candidates) >= 2:
-                area1, approx1 = rect_candidates[0]
-                # If the largest is almost the size of the whole area, it's probably the outer frame.
-                if area1 > w * h * 0.95:
-                    _, best_rect = rect_candidates[1]
-                else:
-                    _, best_rect = rect_candidates[0]
-            else:
-                _, best_rect = rect_candidates[0]
+            # Sort by area ascending to find the innermost one
+            rect_candidates.sort(key=lambda x: x[0])
+
+            # The smallest rectangle that met our min_area threshold should be the innermost neatline.
+            _, best_rect = rect_candidates[0]
 
             # Sort the points of the rectangle
             pts = best_rect.reshape(4, 2)
