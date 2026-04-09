@@ -4,6 +4,7 @@ from .georeferencer import Georeferencer, GeoReference
 from .exporters import export_geotiff, export_world_file
 from .soviet_grid import SovietGridDecoder
 from .neatline_finder import NeatlineFinder, NeatlineResult
+from .visualizer import generate_visual_report
 
 __all__ = [
     "CollarDetector",
@@ -18,4 +19,5 @@ __all__ = [
     "SovietGridDecoder",
     "NeatlineFinder",
     "NeatlineResult",
+    "generate_visual_report",
 ]

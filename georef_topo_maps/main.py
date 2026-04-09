@@ -2,7 +2,7 @@ import argparse
 from pathlib import Path
 import cv2
 
-from src import CollarDetector, SovietGridDecoder, CoordinateOCR
+from src import CollarDetector, SovietGridDecoder, CoordinateOCR, generate_visual_report
 from src.georeferencer import Georeferencer, GeoReference
 from src.exporters import export_geotiff, export_world_file
 from src.shapefile_index import ShapefileIndex
@@ -109,6 +109,9 @@ def main():
     cv2.imwrite(str(cropped_path), neatline_result.cropped_image)
     export_geotiff(cropped_path, geotiff_path, ref)
     export_world_file(geotiff_path, ref)
+
+    print("Generating visual report...")
+    generate_visual_report(img, neatline_result.neatline_bbox, ref, output_dir, base)
 
     print(f"Done: {geotiff_path}")
     print(f"      {geotiff_path.with_suffix('.tfw')}")
