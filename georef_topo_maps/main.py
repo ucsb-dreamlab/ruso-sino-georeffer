@@ -22,6 +22,11 @@ def main():
         default=DEFAULT_SHAPEFILE,
         help="Path to shapefile index (default: index_map/6840s_100_r8_INDEX.shp)",
     )
+    parser.add_argument(
+        "--visualize",
+        action="store_true",
+        help="Open the visual report in a browser immediately",
+    )
     args = parser.parse_args()
 
     input_path = Path(args.input)
@@ -111,7 +116,14 @@ def main():
     export_world_file(geotiff_path, ref)
 
     print("Generating visual report...")
-    generate_visual_report(img, neatline_result.neatline_bbox, ref, output_dir, base)
+    generate_visual_report(
+        img,
+        neatline_result.neatline_bbox,
+        ref,
+        output_dir,
+        base,
+        open_browser=args.visualize,
+    )
 
     print(f"Done: {geotiff_path}")
     print(f"      {geotiff_path.with_suffix('.tfw')}")

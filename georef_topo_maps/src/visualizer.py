@@ -12,6 +12,7 @@ def generate_visual_report(
     output_dir: Path,
     map_name: str,
     crop_size: int = 512,
+    open_browser: bool = False,
 ) -> None:
     """
     Generates an HTML report with corner crops and a Leaflet map.
@@ -141,4 +142,5 @@ def generate_visual_report(
         f.write(html_content)
 
     print(f"Visualization report generated: {html_path}")
-    webbrowser.open(f"file://{html_path.absolute()}")
+    if open_browser:
+        webbrowser.open(f"file://{html_path.absolute()}")
